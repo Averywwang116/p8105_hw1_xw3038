@@ -41,6 +41,74 @@ Then make the scatterplot flipper_length_mm (y) vs bill_length_mm (x) using ggpl
 ggplot(penguins, aes(x = bill_length_mm, 
                      y = flipper_length_mm,
                      color = species)) + geom_point()
-#save the scatter plot with the name scatter_plot.pdf and specify the height and width to be demonstrated
+#save the scatter plot with the name scatter_plot.pdf and specify the height and width 
 ggsave("scatter_plot.pdf", height = 6, width = 8)
 ```
+
+
+## Problem 2
+
+```{r}
+#set the seed to make sure numbers can be reproduced
+set.seed(123)
+#use tibble function and create the dataframe naming df
+df=tibble(
+  #set a random sample of size 10 from a standard Normal distribution
+  random_sample=rnorm(10),
+  #a logical vector indicating whether >0
+  logical_vector=rnorm(10)>0,
+  #a character vector of length 10
+  char_vec=c("Amy", "Tony", "Joy", "John", 
+             "Michael", "Emma" ,"Lucy","Elsa",
+             "Roy","Eva"),
+  #a factor vector of length 10, 3 different levels
+  factor_vec=factor(c("fail", "good", "excellent", 
+               "good", "fail", "excellent", 
+              "excellent","good", "fail", "good"))
+
+)
+```
+
+
+Then take the mean of each variable with mean() and pull():
+
+```{r}
+#take the mean of random_sample
+mean(pull(df, random_sample))
+```
+
+```{r}
+#take the mean of the logical_vector
+mean(pull(df,logical_vector))
+```
+
+```{r}
+#take the mean of char_vec
+mean(pull(df,char_vec))
+```
+
+```{r}
+#take the mean of variable factor_vec
+mean(pull(df,factor_vec))
+```
+
+From the codes above, the variables logical_vector and random_sample work. But char_vec and factor_vec cannot work
+
+```{r, warning=FALSE}
+#convert logical to numeric
+numeric_logical= as.numeric(df$logical_vector)
+#convert character to numeric
+numeric_char=as.numeric(df$char_vec)
+#convert factor to numeric 
+numeric_factor=as.numeric(df$factor_vec)
+```
+
+
+* When converting logical to numeric, it successfully creates a numeric vector because TRUE becomes 1 and FALSE becomes 0.
+* When converting character to numeric, it fails and resulting in NA since characters cannot be directly coerced to numbers.
+* When converting factor to numeric, it successfully creates a numeric vector because factors are categorical variables with underlying integer.
+
+When calculating means, it explains what happens, because it shows the way of  converting to 1 and 0 when taking the means of logical vectors. And character vector cannot be converted which is the reason that mean cannot be calculated here. And for the factor, even though it now gets a number, the number is still meaningless in the context of categorical data. So it directly leads to NA when taking the mean of the factor vector.
+
+
+
