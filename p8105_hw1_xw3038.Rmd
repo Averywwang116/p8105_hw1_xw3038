@@ -1,0 +1,16 @@
+---
+title: "Homework1"
+author: "Avery Wang"
+date: 2024-09-19
+output: github_document
+---
+
+## Problem 1
+
+The first step is to import the necessary packages and dataset. The tidyverse library is used here to call the tibble function.
+
+```{r}
+library(tidyverse)
+
+data("penguins", package = "palmerpenguins")
+```
