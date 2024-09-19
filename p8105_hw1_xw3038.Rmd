@@ -108,7 +108,7 @@ numeric_factor=as.numeric(df$factor_vec)
 * When converting character to numeric, it fails and resulting in NA since characters cannot be directly coerced to numbers.
 * When converting factor to numeric, it successfully creates a numeric vector because factors are categorical variables with underlying integer.
 
-When calculating means, it explains what happens, because it shows the way of  converting to 1 and 0 when taking the means of logical vectors. And character vector cannot be converted which is the reason that mean cannot be calculated here. And for the factor, even though it now gets a number, the number is still meaningless in the context of categorical data. So it directly leads to NA when taking the mean of the factor vector.
+When calculating means, it explains what happens, because it shows the way of  converting to 1 and 0 when taking the means of logical vectors. And character vector cannot be converted which is the reason that mean cannot be calculated here. And for the factor, even though it now gets a number, the number is still meaningless in the context of categorical data. So it leads to NA when taking the mean of the factor vector. 
 
 
 
