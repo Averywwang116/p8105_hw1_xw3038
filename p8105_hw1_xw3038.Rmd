@@ -10,7 +10,9 @@ output: github_document
 The first step is to import the necessary packages and dataset. The tidyverse library is used here to call the tibble function.
 
 ```{r}
+#import tidyverse library 
 library(tidyverse)
+# import the dataset
 
 data("penguins", package = "palmerpenguins")
 ```
@@ -31,3 +33,14 @@ The description of the penguins dataset:
 * The number of column is `r ncol(penguins)`.
 
 * The mean of the flipper length is `r round(mean(penguins$flipper_length_mm, na.rm=TRUE),2)` mm.
+
+Then make the scatterplot flipper_length_mm (y) vs bill_length_mm (x) using ggplot
+
+```{r warning=F}
+#use ggplot setting flipper_length_mm as y and bill_length_mm as x with geom_point() to make scatterplot
+ggplot(penguins, aes(x = bill_length_mm, 
+                     y = flipper_length_mm,
+                     color = species)) + geom_point()
+#save the scatter plot with the name scatter_plot.pdf and specify the height and width to be demonstrated
+ggsave("scatter_plot.pdf", height = 6, width = 8)
+```
