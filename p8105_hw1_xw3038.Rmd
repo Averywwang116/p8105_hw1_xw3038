@@ -14,3 +14,20 @@ library(tidyverse)
 
 data("penguins", package = "palmerpenguins")
 ```
+
+The description of the penguins dataset: 
+
+* Key variables in the dataset: `r names(penguins)`
+
+  * The penguins dataset include `r length(levels(penguins$species))` different             kinds of species: `r levels(penguins$species)`.
+  * The penguins dataset include `r length(levels(penguins$island))` different               kinds of islands: `r levels(penguins$island)`.
+  * The dataset include `r length(levels(penguins$sex))` sex types: 
+      `r levels(penguins$sex)`. 
+  * The dataset include `r length(unique(penguins$year))` different years :
+    `r unique(penguins$year)`. 
+
+* The row number of the dataset is `r nrow(penguins)`.
+
+* The number of column is `r ncol(penguins)`.
+
+* The mean of the flipper length is `r round(mean(penguins$flipper_length_mm, na.rm=TRUE),2)` mm.
